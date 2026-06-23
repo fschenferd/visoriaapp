@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Aplicando a fonte Inter em todo o app */
+html {
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: #f8fafc; /* Cinza muito claro e elegante */
+  -webkit-tap-highlight-color: transparent; /* Remove o brilho azul ao clicar no mobile */
+  color: #1e293b; /* Cor de texto mais suave que preto puro */
+}
+
+/* Configurações específicas para impressão (PDF) */
+@media print {
+  body { 
+    background: white; 
+    color: black;
+  }
+  
+  /* Garante que a fonte Inter seja usada na impressão se possível, senão usa serifada limpa */
+  html { font-family: 'Inter', Arial, sans-serif; }
+  
+  body * { visibility: hidden; }
+  #print-area, #print-area * { visibility: visible; }
+  #print-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    background: white;
+    color: black;
+  }
+  
+  .no-print { display: none !important; }
+  
+  img { break-inside: avoid; max-width: 100% !important; height: auto !important; }
+  .page-break { page-break-before: always; }
+}
